@@ -1,13 +1,21 @@
-import http.server
-import socketserver
+from http.server import BaseHTTPRequestHandler
 import json
+import sys
 import os
-from api.compare_json import compare_json, generate_markdown_report
 
-PORT = 8000
+# Import logic from the sibling file
+try:
+    from .compare_json import compare_json, generate_markdown_report
+except ImportError:
+    from api.compare_json import compare_json, generate_markdown_report
 
-class ApplicationRequestHandler(http.server.SimpleHTTPRequestHandler):
+class handler(BaseHTTPRequestHandler):
     def do_POST(self):
+        # Set CORS headers
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        
         if self.path == '/api/compare':
             try:
                 content_length = int(self.headers['Content-Length'])
@@ -45,10 +53,9 @@ class ApplicationRequestHandler(http.server.SimpleHTTPRequestHandler):
         else:
             self.send_error(404, "Endpoint not found")
 
-    def end_headers(self):
+    def do_OPTIONS(self):
+        self.send_response(200)
         self.send_header('Access-Control-Allow-Origin', '*')
-        super().end_headers()
-
-print(f"Serving at http://localhost:{PORT}")
-with socketserver.TCPServer(("", PORT), ApplicationRequestHandler) as httpd:
-    httpd.serve_forever()
+        self.send_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        self.end_headers()
