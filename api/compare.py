@@ -19,11 +19,6 @@ except ImportError:
 
 class handler(BaseHTTPRequestHandler):
     def do_POST(self):
-        # Set CORS headers
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
-        
         if self.path == '/api/compare':
             try:
                 content_length = int(self.headers['Content-Length'])
@@ -50,16 +45,26 @@ class handler(BaseHTTPRequestHandler):
                 
                 self.send_response(200)
                 self.send_header('Content-Type', 'text/markdown')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.send_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
+                self.send_header('Access-Control-Allow-Headers', 'Content-Type')
                 self.end_headers()
                 self.wfile.write(report.encode('utf-8'))
                 
             except Exception as e:
                 self.send_response(400)
                 self.send_header('Content-Type', 'text/plain')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.send_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
+                self.send_header('Access-Control-Allow-Headers', 'Content-Type')
                 self.end_headers()
                 self.wfile.write(str(e).encode('utf-8'))
         else:
-            self.send_error(404, "Endpoint not found")
+            self.send_response(404)
+            self.send_header('Content-Type', 'text/plain')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(b"Endpoint not found")
 
     def do_OPTIONS(self):
         self.send_response(200)
