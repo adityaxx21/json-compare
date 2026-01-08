@@ -1,0 +1,665 @@
+{
+    "mst_service": {
+        "service_id": "SVC025",
+        "service_name": "pulsa-indosat"
+    },
+    "mst_category": {
+        "category_id": "CTG018",
+        "category_name": "PULSA"
+    },
+    "mst_product": {
+        "product_id": "PRD012",
+        "product_name": "MPO"
+    },
+    "mst_partner": {
+        "partner_id": "PRT020",
+        "partner_name": "Restswitching",
+        "fee": "0.00",
+        "base_url": "https://pegadaianrestswitching-dev-integration-switching-dev.apps.ocp-dev.pegadaian.co.id"
+    },
+    "flow_setup": {
+        "flow_setup_id": "FLW029",
+        "flow_setup_name": "payment-pulsa-indosat",
+        "flow_constructor": [
+            "targetPartner:success>complete",
+            "targetPartner:default>end"
+        ],
+        "transaction_flag": 1,
+        "is_callback": 0
+    },
+    "linkage_service_partner": {
+        "mapping_service_partner_id": "MSP042",
+        "service_id": "SVC025",
+        "partner_id": "PRT020",
+        "sub_service_id": "",
+        "weight": "100.00"
+    },
+    "mapping_service_integration": [],
+    "touchpoint": {
+        "touchpoint_id": "TCP059",
+        "url": "{{url}}/mpo/pulsa-indosat/payment-pulsa-indosat",
+        "kafka_topic": "payvolution_payment-engine_mpo_pulsa-indosat_payment-pulsa-indosat",
+        "message_type": null
+    },
+    "connector_config_integration": [],
+    "connector_config_channel": {
+        "channel_id_field_name": null,
+        "channel_id_field_location": null,
+        "channel_list": []
+    },
+    "connector_config": {
+        "partner": {
+            "connector_config_id": "CON017",
+            "connector_type": "http",
+            "base_endpoint": "https://pegadaianrestswitching-qa-regresi-switching-dev.apps.ocp-dev.pegadaian.co.id",
+            "connector_name": "Restswitching Connector",
+            "auth_type": "basic_auth",
+            "auth_path": "",
+            "credential_val": "username=9977|password=PDSpGd123!",
+            "signature_source": null,
+            "connection_time_out": null,
+            "token": []
+        }
+    },
+    "connector_config_external_signature": {},
+    "mapped_message_field": {
+        "partner": {
+            "request": [
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "administrasi",
+                    "message_partner_field_id": "PMM085MPF001",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "administrasi",
+                    "message_field_id": "MSG088FLD001",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "amount",
+                    "message_partner_field_id": "PMM085MPF002",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "amount",
+                    "message_field_id": "MSG088FLD002",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "channelId",
+                    "message_partner_field_id": "PMM085MPF003",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "channelId",
+                    "message_field_id": "MSG088FLD003",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "clientId",
+                    "message_partner_field_id": "PMM085MPF004",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "clientId",
+                    "message_field_id": "MSG088FLD004",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "flag",
+                    "message_partner_field_id": "PMM085MPF005",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "flag",
+                    "message_field_id": "MSG088FLD006",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": "argument|val=seluler",
+                    "message_partner_field": "group",
+                    "message_partner_field_id": "PMM085MPF006",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "",
+                    "message_field_id": "",
+                    "response_code_flag": 0,
+                    "message_field_location": null,
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": "argument|val=MP",
+                    "message_partner_field": "jenisTransaksi",
+                    "message_partner_field_id": "PMM085MPF007",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "",
+                    "message_field_id": "",
+                    "response_code_flag": 0,
+                    "message_field_location": null,
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "kodeBiller",
+                    "message_partner_field_id": "PMM085MPF008",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "kodeBiller",
+                    "message_field_id": "MSG088FLD007",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "kodeLayananMpo",
+                    "message_partner_field_id": "PMM085MPF009",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "kodeLayananMpo",
+                    "message_field_id": "MSG088FLD008",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "norek",
+                    "message_partner_field_id": "PMM085MPF010",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "denom",
+                    "message_field_id": "MSG088FLD005",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "reffBiller",
+                    "message_partner_field_id": "PMM085MPF011",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "reffBiller",
+                    "message_field_id": "MSG088FLD011",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "reffSwitching",
+                    "message_partner_field_id": "PMM085MPF012",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "reffSwitching",
+                    "message_field_id": "MSG088FLD012",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": "argument|val=BANK",
+                    "message_partner_field": "paymentMethod",
+                    "message_partner_field_id": "PMM085MPF013",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "",
+                    "message_field_id": "",
+                    "response_code_flag": 0,
+                    "message_field_location": null,
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": "argument|val=002",
+                    "message_partner_field": "kodeBankPembayar",
+                    "message_partner_field_id": "PMM085MPF014",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "",
+                    "message_field_id": "",
+                    "response_code_flag": 0,
+                    "message_field_location": null,
+                    "value": null,
+                    "response_chain_flag": 0
+                }
+            ],
+            "response": [
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "data>norek",
+                    "message_partner_field_id": "PMM086MPF008",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "data>noHp",
+                    "message_field_id": "MSG089FLD019",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "responseDesc",
+                    "message_partner_field_id": "PMM086MPF002",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "responseDesc",
+                    "message_field_id": "MSG089FLD014",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "data>kodeBiller",
+                    "message_partner_field_id": "PMM086MPF006",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "data>kodeBiller",
+                    "message_field_id": "MSG089FLD016",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "data>kodeLayananMpo",
+                    "message_partner_field_id": "PMM086MPF007",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "data>kodeLayananMpo",
+                    "message_field_id": "MSG089FLD017",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "data>reffSwitching",
+                    "message_partner_field_id": "PMM086MPF013",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "data>reffSwitching",
+                    "message_field_id": "MSG089FLD020",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "data>tglTransaksi",
+                    "message_partner_field_id": "PMM086MPF014",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "data>tglTransaksi",
+                    "message_field_id": "MSG089FLD022",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "data>totalKewajiban",
+                    "message_partner_field_id": "PMM086MPF015",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "data>totalKewajiban",
+                    "message_field_id": "MSG089FLD023",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "data>reffBiller",
+                    "message_partner_field_id": "PMM086MPF009",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "data>reffBiller",
+                    "message_field_id": "MSG089FLD024",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "data>reffMpo",
+                    "message_partner_field_id": "PMM086MPF010",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "data>dataMpo>reffMpo",
+                    "message_field_id": "MSG089FLD026",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "data>sid",
+                    "message_partner_field_id": "PMM086MPF004",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "data>dataMpo>sid",
+                    "message_field_id": "MSG089FLD027",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "data>respCodeMpo",
+                    "message_partner_field_id": "PMM086MPF011",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "data>dataMpo>responseCodeNative",
+                    "message_field_id": "MSG089FLD029",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "data>respDescMpo",
+                    "message_partner_field_id": "PMM086MPF012",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "data>dataMpo>responseDescNative",
+                    "message_field_id": "MSG089FLD030",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "data>serialNumber",
+                    "message_partner_field_id": "PMM086MPF003",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "data>dataMpo>serialNumber",
+                    "message_field_id": "MSG089FLD031",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "responseCode",
+                    "message_partner_field_id": "PMM086MPF001",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "responseCode",
+                    "message_field_id": "MSG089FLD013",
+                    "response_code_flag": 1,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                },
+                {
+                    "transform_arg": null,
+                    "message_partner_field": "data>norek",
+                    "message_partner_field_id": "PMM086MPF008",
+                    "callback_flag": 0,
+                    "message_partner_field_location": "body",
+                    "message_field": "data>dataMpo>noHp",
+                    "message_field_id": "MSG089FLD028",
+                    "response_code_flag": 0,
+                    "message_field_location": "body",
+                    "value": null,
+                    "response_chain_flag": 0
+                }
+            ]
+        }
+    },
+    "mapped_message_field_integration": [],
+    "parameter_management": [],
+    "response_code": {
+        "flag": {
+            "message_field_id": "MSG089FLD013",
+            "standar_message_setup_id": "MSG089",
+            "message_field": "responseCode",
+            "location": "body",
+            "response_code_flag": 1,
+            "sensitive_field_flag": 0
+        },
+        "mapped": [
+            {
+                "response_code_mapper_id": "RCM217",
+                "service_id": "SVC025",
+                "partner_id": "PRT020",
+                "step": "FLW029",
+                "flow_setup_id": "FLW029",
+                "response_code_id": "RSC150",
+                "response_code_ori": "12",
+                "response_code_partner_id": "RCP160",
+                "response_code": "4000011912",
+                "response_desc": "Invalid transaction"
+            },
+            {
+                "response_code_mapper_id": "RCM218",
+                "service_id": "SVC025",
+                "partner_id": "PRT020",
+                "step": "FLW029",
+                "flow_setup_id": "FLW029",
+                "response_code_id": "RSC149",
+                "response_code_ori": "13",
+                "response_code_partner_id": "RCP161",
+                "response_code": "4220011913",
+                "response_desc": "Jumlah tidak sesuai"
+            },
+            {
+                "response_code_mapper_id": "RCM219",
+                "service_id": "SVC025",
+                "partner_id": "PRT020",
+                "step": "FLW029",
+                "flow_setup_id": "FLW029",
+                "response_code_id": "RSC148",
+                "response_code_ori": "14",
+                "response_code_partner_id": "RCP162",
+                "response_code": "4040011914",
+                "response_desc": "Rekening/Data tidak ditemukan"
+            },
+            {
+                "response_code_mapper_id": "RCM220",
+                "service_id": "SVC025",
+                "partner_id": "PRT020",
+                "step": "FLW029",
+                "flow_setup_id": "FLW029",
+                "response_code_id": "RSC147",
+                "response_code_ori": "15",
+                "response_code_partner_id": "RCP163",
+                "response_code": "4030011915",
+                "response_desc": "Rekening Blokir / Tidak Aktif"
+            },
+            {
+                "response_code_mapper_id": "RCM221",
+                "service_id": "SVC025",
+                "partner_id": "PRT020",
+                "step": "FLW029",
+                "flow_setup_id": "FLW029",
+                "response_code_id": "RSC146",
+                "response_code_ori": "16",
+                "response_code_partner_id": "RCP164",
+                "response_code": "4030011916",
+                "response_desc": "CIF Sudah tidak aktif"
+            },
+            {
+                "response_code_mapper_id": "RCM223",
+                "service_id": "SVC025",
+                "partner_id": "PRT020",
+                "step": "FLW029",
+                "flow_setup_id": "FLW029",
+                "response_code_id": "RSC145",
+                "response_code_ori": "17",
+                "response_code_partner_id": "RCP165",
+                "response_code": "4040011917",
+                "response_desc": "Param Not Found"
+            },
+            {
+                "response_code_mapper_id": "RCM106",
+                "service_id": "SVC025",
+                "partner_id": "PRT020",
+                "step": "FLW029",
+                "flow_setup_id": "FLW029",
+                "response_code_id": "RSC105",
+                "response_code_ori": "00",
+                "response_code_partner_id": "RCP120",
+                "response_code": "2000011900",
+                "response_desc": "Approved"
+            },
+            {
+                "response_code_mapper_id": "RCM214",
+                "service_id": "SVC025",
+                "partner_id": "PRT020",
+                "step": "FLW029",
+                "flow_setup_id": "FLW029",
+                "response_code_id": "RSC153",
+                "response_code_ori": "0X",
+                "response_code_partner_id": "RCP157",
+                "response_code": "400001190X",
+                "response_desc": "Failed"
+            },
+            {
+                "response_code_mapper_id": "RCM215",
+                "service_id": "SVC025",
+                "partner_id": "PRT020",
+                "step": "FLW029",
+                "flow_setup_id": "FLW029",
+                "response_code_id": "RSC152",
+                "response_code_ori": "X4",
+                "response_code_partner_id": "RCP158",
+                "response_code": "40400119X4",
+                "response_desc": "There is no resource path"
+            },
+            {
+                "response_code_mapper_id": "RCM216",
+                "service_id": "SVC025",
+                "partner_id": "PRT020",
+                "step": "FLW029",
+                "flow_setup_id": "FLW029",
+                "response_code_id": "RSC151",
+                "response_code_ori": "X5",
+                "response_code_partner_id": "RCP159",
+                "response_code": "50000119X5",
+                "response_desc": "Service internal error"
+            },
+            {
+                "response_code_mapper_id": "RCM222",
+                "service_id": "SVC025",
+                "partner_id": "PRT020",
+                "step": "FLW029",
+                "flow_setup_id": "FLW029",
+                "response_code_id": "RSC144",
+                "response_code_ori": "30",
+                "response_code_partner_id": "RCP166",
+                "response_code": "4000011930",
+                "response_desc": "Format Data Salah"
+            }
+        ],
+        "group": [
+            {
+                "response_group_id": "RSG059",
+                "service_id": "SVC025",
+                "partner_id": "PRT020",
+                "flow_setup_id": "FLW029",
+                "response_group_name": "success",
+                "deletable": 0,
+                "response_group_details": [
+                    {
+                        "response_group_detail_id": "RGD016",
+                        "response_code_partner_id": "RCP120",
+                        "response_code_ori": "00"
+                    }
+                ]
+            }
+        ]
+    },
+    "response_code_integration": [],
+    "callback": {},
+    "message_management": {
+        "partner": {
+            "request": {
+                "partner_message_id": "PMM085",
+                "service_id": "SVC025",
+                "partner_id": "PRT020",
+                "step": "FLW029",
+                "message_type": 0,
+                "api_method": "post",
+                "url_path": "mpo/posting/direct/mitra",
+                "flow_setup_id": "FLW029"
+            },
+            "response": {
+                "partner_message_id": "PMM086",
+                "service_id": "SVC025",
+                "partner_id": "PRT020",
+                "step": "FLW029",
+                "message_type": 1,
+                "api_method": "post",
+                "url_path": null,
+                "flow_setup_id": "FLW029"
+            }
+        }
+    },
+    "message_management_integration": [],
+    "transaction_record_mapping": {
+        "transaction_record_mapping_id": "TRM006",
+        "service_id": "SVC025",
+        "step": "FLW029",
+        "flow_setup_id": "FLW029",
+        "trx_id": "MSG088FLD012",
+        "trx_id_field_name": "reffSwitching",
+        "customer_id": "MSG088FLD010",
+        "customer_id_field_name": "noHp",
+        "amount": "MSG088FLD002",
+        "amount_field_name": "amount",
+        "currency": null,
+        "currency_field_name": null
+    },
+    "sensitive_field": {
+        "standard": {
+            "request": [],
+            "response": []
+        },
+        "partner": {
+            "request": [],
+            "response": [],
+            "integration": []
+        }
+    }
+}
