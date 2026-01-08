@@ -3,11 +3,19 @@ import json
 import sys
 import os
 
-# Import logic from the sibling file
+# Add current directory to path to ensure we can import sibling files in Vercel environment
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if current_dir not in sys.path:
+    sys.path.append(current_dir)
+
 try:
-    from .compare_json import compare_json, generate_markdown_report
+    from compare_json import compare_json, generate_markdown_report
 except ImportError:
-    from api.compare_json import compare_json, generate_markdown_report
+    # Debugging aid: if this fails, the file likely isn't in api/
+    try:
+        from api.compare_json import compare_json, generate_markdown_report
+    except ImportError:
+        raise ImportError(f"Could not import compare_json. Please ensure compare_json.py is in the api/ folder.")
 
 class handler(BaseHTTPRequestHandler):
     def do_POST(self):
